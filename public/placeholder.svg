@@ -1,0 +1,16 @@
+<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D3B2E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3E7F63;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#grad)"/>
+  <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="48" fill="#D6C9B2" text-anchor="middle" dominant-baseline="middle">
+    Add your image here
+  </text>
+  <text x="50%" y="55%" font-family="Arial, sans-serif" font-size="24" fill="#F4F3EF" text-anchor="middle" dominant-baseline="middle" opacity="0.7">
+    See public/images/README.md for details
+  </text>
+</svg>
+
