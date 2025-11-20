@@ -1,0 +1,43 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
+import fs from 'fs/promises';
+import path from 'path';
+
+const CONTENT_FILE = path.join(process.cwd(), 'data', 'content.json');
+
+async function isAuthenticated(): Promise<boolean> {
+  const cookieStore = await cookies();
+  const authCookie = cookieStore.get('admin-auth');
+  return authCookie?.value === 'authenticated';
+}
+
+export async function GET() {
+  try {
+    const fileContent = await fs.readFile(CONTENT_FILE, 'utf-8');
+    const content = JSON.parse(fileContent);
+    return NextResponse.json(content);
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Failed to read content' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST(request: NextRequest) {
+  if (!(await isAuthenticated())) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  try {
+    const content = await request.json();
+    await fs.writeFile(CONTENT_FILE, JSON.stringify(content, null, 2), 'utf-8');
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Failed to save content' },
+      { status: 500 }
+    );
+  }
+}
+

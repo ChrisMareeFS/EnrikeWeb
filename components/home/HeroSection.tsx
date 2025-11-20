@@ -1,19 +1,50 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Button from "@/components/Button";
 import GlassCard from "@/components/GlassCard";
 
 export default function HeroSection() {
+  const [content, setContent] = useState<any>(null);
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then(res => res.json())
+      .then(data => setContent(data?.hero || null))
+      .catch(() => {
+        // Fallback to default content
+        setContent({
+          title1: "Decoding Your Dinner",
+          title2: "Clarity from Farm to Fork",
+          description: "Join Enrike as she investigates the entire food chain—from the microscopic world of genetics and AI all the way through to cold chain logistics and the final meal. See the whole process, with heart.",
+          backgroundImage: "/images/portrait-3.jpg",
+          backgroundPosition: "center_20%",
+          cta1: { text: "Book Enrike to Speak", href: "/speaking" },
+          cta2: { text: "Work With Enrike", href: "/consulting" },
+          socialLinks: [
+            { name: "LinkedIn", url: "https://www.linkedin.com/in/enrike-maree" },
+            { name: "YouTube", url: "https://www.youtube.com/@enrike" },
+            { name: "Instagram", url: "https://www.instagram.com/enrike" },
+            { name: "Twitter", url: "https://twitter.com/enrike" },
+          ]
+        });
+      });
+  }, []);
+
+  if (!content) {
+    return <div className="scroll-section min-w-full h-screen" />;
+  }
+
   return (
     <section className="scroll-section min-w-full h-screen flex items-end relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/portrait-3.jpg"
+          src={content.backgroundImage || "/images/portrait-3.jpg"}
           alt="Enrike Maree"
           fill
-          className="object-cover object-[center_20%]"
+          className={`object-cover object-${content.backgroundPosition || "center_20%"}`}
           priority
           sizes="100vw"
         />
@@ -25,9 +56,9 @@ export default function HeroSection() {
           {/* Title Outside Block */}
           <div className="mb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold leading-tight">
-              <span className="text-forest-medium">Decoding Your Dinner</span>
+              <span className="text-forest-medium">{content.title1}</span>
               <br />
-              <span className="text-soft-white">Clarity from Farm to Fork</span>
+              <span className="text-soft-white">{content.title2}</span>
             </h1>
           </div>
 
@@ -37,28 +68,21 @@ export default function HeroSection() {
               {/* Left: Description and CTAs */}
               <div className="space-y-6">
                 <p className="text-lg md:text-xl text-soft-white/90 leading-relaxed">
-                  Join Enrike as she investigates the entire food chain—from the microscopic world of 
-                  genetics and AI all the way through to cold chain logistics and the final meal. 
-                  See the whole process, with heart.
+                  {content.description}
                 </p>
 
                 <div className="flex flex-wrap gap-4">
-                  <Button href="/speaking" variant="primary">
-                    Book Enrike to Speak
+                  <Button href={content.cta1?.href || "/speaking"} variant="primary">
+                    {content.cta1?.text || "Book Enrike to Speak"}
                   </Button>
-                  <Button href="/consulting" variant="secondary">
-                    Work With Enrike
+                  <Button href={content.cta2?.href || "/consulting"} variant="secondary">
+                    {content.cta2?.text || "Work With Enrike"}
                   </Button>
                 </div>
 
                 {/* Social Links */}
                 <div className="flex flex-wrap gap-3 md:gap-4 pt-4">
-                  {[
-                    { name: "LinkedIn", url: "https://www.linkedin.com/in/enrike-maree" },
-                    { name: "YouTube", url: "https://www.youtube.com/@enrike" },
-                    { name: "Instagram", url: "https://www.instagram.com/enrike" },
-                    { name: "Twitter", url: "https://twitter.com/enrike" },
-                  ].map((platform) => (
+                  {(content.socialLinks || []).map((platform: any) => (
                     <a
                       key={platform.name}
                       href={platform.url}

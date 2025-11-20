@@ -1,19 +1,40 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import GlassCard from "@/components/GlassCard";
 import Button from "@/components/Button";
 
 export default function AboutSection() {
+  const [content, setContent] = useState<any>(null);
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then(res => res.json())
+      .then(data => setContent(data?.about || null))
+      .catch(() => {
+        setContent({
+          title: "About Enrike",
+          description: "Enrike Maree is an agricultural science communicator and thought leader dedicated to bridging the gap between complex research and practical farming solutions. With over a decade of experience translating scientific innovations into accessible insights for farmers, industry professionals, and policymakers, she continues to decode the complex world of modern agriculture through her platform—formerly known as AgreeToThisAgri, now rebranded as Enrike.co.za—with clarity, credibility, and curiosity.",
+          backgroundImage: "/images/arms-up.jpg",
+          backgroundPosition: "right_center"
+        });
+      });
+  }, []);
+
+  if (!content) {
+    return <div className="scroll-section min-w-full h-screen" />;
+  }
+
   return (
     <section className="scroll-section min-w-full h-screen flex items-end relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/arms-up.jpg"
+          src={content.backgroundImage || "/images/arms-up.jpg"}
           alt="Enrike Maree - Agricultural Science Communicator"
           fill
-          className="object-cover object-[right_center]"
+          className={`object-cover object-${content.backgroundPosition || "right_center"}`}
           sizes="100vw"
           priority
         />
@@ -28,13 +49,13 @@ export default function AboutSection() {
               <div className="space-y-6">
                 <div>
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-4 text-soft-white">
-                    About Enrike
+                    {content.title}
                   </h2>
                   <div className="w-20 h-1 bg-beige-warm rounded-full mb-6" />
                 </div>
 
                 <p className="text-base md:text-lg text-soft-white/90 leading-relaxed">
-                  Enrike Maree is an agricultural science communicator and thought leader dedicated to bridging the gap between complex research and practical farming solutions. With over a decade of experience translating scientific innovations into accessible insights for farmers, industry professionals, and policymakers, she continues to decode the complex world of modern agriculture through her platform—formerly known as <span className="text-beige-warm font-medium">AgreeToThisAgri</span>, now rebranded as <span className="text-beige-warm font-medium">Enrike.co.za</span>—with clarity, credibility, and curiosity.
+                  {content.description}
                 </p>
               </div>
 

@@ -1,0 +1,131 @@
+{
+  "hero": {
+    "title1": "Decoding Your Dinner",
+    "title2": "Clarity from Farm to Fork",
+    "description": "Join Enrike as she investigates the entire food chain—from the microscopic world of genetics and AI all the way through to cold chain logistics and the final meal. See the whole process, with heart.",
+    "backgroundImage": "/images/portrait-3.jpg",
+    "backgroundPosition": "center_20%",
+    "cta1": {
+      "text": "Book Enrike to Speak",
+      "href": "/speaking"
+    },
+    "cta2": {
+      "text": "Work With Enrike",
+      "href": "/consulting"
+    },
+    "socialLinks": [
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/in/enrike-maree"
+      },
+      {
+        "name": "YouTube",
+        "url": "https://www.youtube.com/@enrike"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/enrike"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/enrike"
+      }
+    ]
+  },
+  "about": {
+    "title": "About Enrike",
+    "description": "Enrike Maree is an agricultural science communicator and thought leader dedicated to bridging the gap between complex research and practical farming solutions. With over a decade of experience translating scientific innovations into accessible insights for farmers, industry professionals, and policymakers, she continues to decode the complex world of modern agriculture through her platform—formerly known as AgreeToThisAgri, now rebranded as Enrike.co.za—with clarity, credibility, and curiosity.",
+    "backgroundImage": "/images/arms-up.jpg",
+    "backgroundPosition": "right_center"
+  },
+  "services": {
+    "title": "How Enrike Can Help",
+    "subtitle": "Bridging the gap between agricultural research and real-world application",
+    "backgroundImage": "/images/portrait-standing.jpg",
+    "backgroundPosition": "center",
+    "items": [
+      {
+        "title": "Speaking & Keynotes",
+        "description": "Engaging talks that translate complex agricultural science into compelling narratives for conferences, events, and workshops.",
+        "features": [
+          "Keynote presentations",
+          "Panel discussions",
+          "Workshop facilitation",
+          "Farmer education sessions"
+        ],
+        "href": "/speaking"
+      },
+      {
+        "title": "Strategic Consulting",
+        "description": "Expert guidance for agricultural businesses, NGOs, and organizations looking to improve their science communication.",
+        "features": [
+          "Communication strategy",
+          "Content development",
+          "Brand positioning",
+          "Stakeholder engagement"
+        ],
+        "href": "/consulting"
+      },
+      {
+        "title": "Content Creation",
+        "description": "High-quality, research-backed content that makes agricultural science accessible and actionable for diverse audiences.",
+        "features": [
+          "Educational videos",
+          "Articles & blog posts",
+          "Social media content",
+          "Scientific translations"
+        ],
+        "href": "/resources"
+      }
+    ]
+  },
+  "featuredContent": {
+    "title": "Content & Resources",
+    "subtitle": "Formerly AgreeToThisAgri, now continuing to provide valuable agricultural insights and education",
+    "backgroundImage": "/images/portrait-arms.jpg",
+    "backgroundPosition": "center_30%",
+    "contentTypes": [
+      {
+        "type": "Videos",
+        "icon": "🎥",
+        "description": "Visual deep-dives into agricultural science topics",
+        "examples": [
+          "Soil Microbiome Explained",
+          "Climate-Smart Farming Practices",
+          "Farm-to-Fork Journey"
+        ]
+      },
+      {
+        "type": "Articles",
+        "icon": "📝",
+        "description": "In-depth written analyses and insights",
+        "examples": [
+          "The Future of Regenerative Agriculture",
+          "Understanding Carbon Farming",
+          "Tech Innovation in Agri"
+        ]
+      },
+      {
+        "type": "Podcasts",
+        "icon": "🎙️",
+        "description": "Conversations with industry leaders and researchers",
+        "examples": [
+          "Farmer Stories Series",
+          "Research Spotlight",
+          "Policy & Practice"
+        ]
+      },
+      {
+        "type": "Resources",
+        "icon": "📚",
+        "description": "Educational materials for farmers and students",
+        "examples": [
+          "Beginner's Guide to Soil Health",
+          "Sustainable Practices Toolkit",
+          "Industry Reports"
+        ]
+      }
+    ]
+  }
+}
+
