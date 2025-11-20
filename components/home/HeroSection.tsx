@@ -44,7 +44,8 @@ export default function HeroSection() {
           src={content.backgroundImage || "/images/portrait-3.jpg"}
           alt="Enrike Maree"
           fill
-          className={`object-cover object-${content.backgroundPosition || "center_20%"}`}
+          className="object-cover"
+          style={{ objectPosition: content.backgroundPosition || "center 20%" }}
           priority
           sizes="100vw"
         />

@@ -34,7 +34,8 @@ export default function AboutSection() {
           src={content.backgroundImage || "/images/arms-up.jpg"}
           alt="Enrike Maree - Agricultural Science Communicator"
           fill
-          className={`object-cover object-${content.backgroundPosition || "right_center"}`}
+          className="object-cover"
+          style={{ objectPosition: content.backgroundPosition || "right center" }}
           sizes="100vw"
           priority
         />
